@@ -59,7 +59,7 @@ public class Player : Actor, IInputReader
 
         deltaPosition = GetNewDeltaPosition();
 
-        if(mover2D.collisions.left || mover2D.collisions.right)
+        if ((mover2D.collisions.left || mover2D.collisions.right) && !(mover2D.collisions.climbingSlope || mover2D.collisions.descendingSlope))
             currentXSpeed = 0;
 
         mover2D.Move(deltaPosition);
