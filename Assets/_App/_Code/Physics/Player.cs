@@ -18,6 +18,7 @@ public class Player : Actor, IInputReader
     [SerializeField] private float coyoteTime = .1f;
     private float jumpButtonPressedTimer;
     private float coyoteTimer;
+    [SerializeField] private bool canDoubleJump = true;
 
     private float jumpPower;
     private float minJumpPower;
@@ -25,6 +26,9 @@ public class Player : Actor, IInputReader
     private float maxHeightReached = Mathf.NegativeInfinity;
     private bool jumpButtonStillPressed;
     private float gravityMultiplier = 1f;
+
+    /// Abilities
+    [SerializeField] private bool doubleJumpUnlocked = false;
 
     private void Start()
     {
@@ -59,11 +63,11 @@ public class Player : Actor, IInputReader
 
         deltaPosition = GetNewDeltaPosition();
 
-        if ((mover2D.collisions.left || mover2D.collisions.right) && !(mover2D.collisions.climbingSlope || mover2D.collisions.descendingSlope))
-            currentXSpeed = 0;
-
         mover2D.Move(deltaPosition);
-        if (IsGrounded()) { currentYSpeed = 0; }
+        if (IsGrounded()) { 
+            currentYSpeed = 0;
+            canDoubleJump = true;
+        }
         renderDirectionSetter.SetDir(GetCurrentDir());
     }
 
@@ -83,6 +87,16 @@ public class Player : Actor, IInputReader
         }
     }
 
+    public void UnlockAbility(int ability)
+    {
+        switch (ability)
+        {
+            case 0:
+                doubleJumpUnlocked = true;
+                break;
+        }
+    }
+
     private void OnJumpButtonPressed()
     {
         jumpButtonStillPressed = true;
@@ -99,10 +113,18 @@ public class Player : Actor, IInputReader
 
     private void CheckIfShouldJump()
     {
-        if ((coyoteTimer > 0 && jumpButtonStillPressed))
+        if (coyoteTimer > 0 && jumpButtonStillPressed)
         {
-            Jump();
+            jumpButtonStillPressed = false;
+            Jump(jumpPower);
             coyoteTimer = -coyoteTime;
+            Debug.Log("Jump normal");
+        }
+        else if (jumpButtonStillPressed && canDoubleJump && doubleJumpUnlocked)
+        {
+            canDoubleJump = false;
+            Jump(jumpPower);
+            Debug.Log("Jump double");
         }
     }
 
@@ -141,7 +163,7 @@ public class Player : Actor, IInputReader
         }
     }
 
-    private void Jump()
+    private void Jump(float jumpPower)
     {
         maxHeightReached = Mathf.NegativeInfinity;
         currentYSpeed = jumpPower;

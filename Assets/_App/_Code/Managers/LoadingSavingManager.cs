@@ -5,7 +5,7 @@ using UnityEngine;
 /// <summary>
 /// Responsible for just loading and saving to a file. That's it.
 /// </summary>
-public class LoadingSavingManager
+public class LoadingSavingManager : MonoBehaviour
 {
     public static void SaveGame(Savegame savegame)
     {

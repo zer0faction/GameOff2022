@@ -6,6 +6,7 @@ using UnityEngine.Tilemaps;
 public class GridController : MonoBehaviour, IOnStartScene
 {
     [SerializeField] private TilemapRenderer cameraBorderTilemapRenderer;
+    [SerializeField] private TilemapRenderer solidTilemapRenderer;
 
     //ToDo: replace this shit
     private void Start()
@@ -16,5 +17,6 @@ public class GridController : MonoBehaviour, IOnStartScene
     public void OnStartScene()
     {
         cameraBorderTilemapRenderer.enabled = false;
+        solidTilemapRenderer.enabled = false;
     }
 }

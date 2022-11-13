@@ -41,9 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: ForegroundTiles
-    uniqueID: 3700559735
+  - name: CameraBackground
+    uniqueID: 2499663005
+    locked: 0
+  - name: Background
+    uniqueID: 532224883
     locked: 0
   - name: Player
     uniqueID: 4109676073
+    locked: 0
+  - name: Foreground
+    uniqueID: 3700559735
+    locked: 0
+  - name: CameraForeground
+    uniqueID: 839500973
     locked: 0
