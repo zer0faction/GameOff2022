@@ -3,7 +3,8 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Light
   layers:
   - Default
   - TransparentFX
@@ -43,6 +44,9 @@ TagManager:
     locked: 0
   - name: CameraBackground
     uniqueID: 2499663005
+    locked: 0
+  - name: CameraForeGroundStars
+    uniqueID: 522147553
     locked: 0
   - name: Background
     uniqueID: 532224883

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: Camp Happy WIP 3 Cabins_1
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -1419953553, guid: 7ac4f330c49df264e932cbe9551a6822, type: 3}
+  m_Sprite: {fileID: -1644468624, guid: a7404f1bd9aeb8d41a5083c7a8983529, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
