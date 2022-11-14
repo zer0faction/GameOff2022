@@ -19,7 +19,7 @@ public class DayNightWeatherController : MonoBehaviour
         GetAllLights();
 
         //Testing
-        SetWeatherEffectsAndTimeOfDay(9, false);
+        SetWeatherEffectsAndTimeOfDay(20, true);
     }
 
     /// <summary>
@@ -77,5 +77,6 @@ public class DayNightWeatherController : MonoBehaviour
         cameraBackgroundController.SetBackgroundNightOne();
         volume.profile.TryGet<UnityEngine.Rendering.Universal.ColorAdjustments>(out colorAdjustments);
         colorAdjustments.postExposure.value = -5.7f;
+        colorAdjustments.contrast.value = 34f;
     }
 }
